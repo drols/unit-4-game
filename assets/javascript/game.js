@@ -8,19 +8,19 @@ var wins = newFunction();
 var losses = 0;
 
 
-var j = 0;
+var imgSuffix = 0;
 var rupees = [9, 3, 6, 12];
 
 
 for (var i = 0; i < rupees.length; i++) {
     
-    var gemImage = $('<div class="col gem"> <img src="assets/images/rupee' + j++ + '.png" data-value=' + rupees[i] + ' /></div>')
+    var gemImage = $('<div class="col gem"> <img src="assets/images/rupee' + imgSuffix++ + '.png" data-value=' + rupees[i] + ' /></div>')
     $(".gem-wrapper").append(gemImage);
 
     function shuffle(rupees) {
-        for (let k = rupees.length - 1; k > 0; k--) {
-            const l = Math.floor(Math.random() * (k + 1));
-            [rupees[k], rupees[l]] = [rupees[l], rupees[k]];
+        for (let t = rupees.length - 1; t > 0; t--) {
+            const l = Math.floor(Math.random() * (t + 1));
+            [rupees[t], rupees[l]] = [rupees[l], rupees[t]];
         }
         return rupees;
     }
@@ -52,7 +52,7 @@ $(".gem img").on("click", function () {
         $("#number-to-guess").text(newTargetNumber.targetNumber);
         $(".counter").text("Your Count: " + newTargetNumber.counter);
         
-        alert("You Win!")
+        alert("You Win!\n\nPlay again?")
     } else if (newTargetNumber.counter > newTargetNumber.targetNumber) {
         
         losses++;
